@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import { firebase } from "./Admin/Services/FIREBASE";
+import { saveToken } from "./Admin/Services/storage.service";
 
 import Main from "./Main";
 
@@ -12,22 +13,24 @@ class App extends Component {
     super(props);
 
     this.state = {
-      authUser: null
+      user: null
     };
   }
 
   componentDidMount() {
-    firebase.auth.onAuthStateChanged(authUser => {
-      authUser
-        ? this.setState(() => ({ authUser }))
-        : this.setState(() => ({ authUser: null }));
+    firebase.auth.onAuthStateChanged(user => {
+      user
+        ? (
+          this.setState({ user }),
+          saveToken(user.uid))
+        : this.setState({ user: null });
     });
   }
 
   render() {
     return (
       <Router>
-        <Main authUser={this.state.authUser} />
+        <Main user={this.state.user}/>
       </Router>
     );
   }

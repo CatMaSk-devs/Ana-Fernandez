@@ -8,11 +8,11 @@ import PrivateRoute from "./Routes/PrivateRoutesComponent";
 
 import * as routes from "./CONSTANTS/routes";
 
-const Main = ({ authUser }) => {
+const Main = ({ user }) => {
   return (
     <div>
       <Switch>
-        <PrivateRoute auth={authUser} exact path={routes.ADMIN_PAGE} component={AdminPage} />
+        <PrivateRoute user={user} exact path={routes.ADMIN_PAGE} component={AdminPage} />
         <Route exact path={routes.HOME_PAGE} component={HomePage} />
         <Route exact path={routes.SIGN_IN} component={LoginComponent} />
       </Switch>

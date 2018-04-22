@@ -1,21 +1,25 @@
 import React from "react";
 import { Route, Redirect } from "react-router";
 
-const PrivateRoute = ({ authUser, component: Component, ...rest }) => (
+import { getToken } from "../Admin/Services/storage.service";
+
+import * as routes from "../CONSTANTS/routes";
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      authUser ? (
+    render={props => {
+      return getToken() ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: "/login",
+            pathname: routes.SIGN_IN,
             state: { from: props.location }
           }}
         />
-      )
-    }
+      );
+    }}
   />
 );
 
