@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -7,9 +7,11 @@ const config = {
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGE_SENDER_ID
-}
+};
 
-firebase.initializeApp(config)
-const auth = firebase.auth()
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
+const auth = firebase.auth();
 
 export { auth };
