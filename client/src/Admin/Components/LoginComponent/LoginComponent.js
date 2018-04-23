@@ -1,81 +1,79 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
+import { withRouter } from "react-router-dom";
 
 import { auth } from "../../Services/FIREBASE";
 import * as routes from "../../../CONSTANTS/routes";
 
-import "./LoginComponent.css";
+const SignInPage = ({ history }) => (
+  <div>
+    <h1>SignIn</h1>
+    <SignInForm history={history} />
+  </div>
+);
 
-class LoginComponent extends Component {
+const updateByPropertyName = (propertyName, value) => () => ({
+  [propertyName]: value
+});
+
+const INITIAL_STATE = {
+  email: "",
+  password: "",
+  error: null
+};
+
+class SignInForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: "",
-      password: "",
-      fireRedirect: false
-    };
+
+    this.state = { ...INITIAL_STATE };
   }
 
-  handleChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  handleSubmit = async e => {
+  onSubmit = e => {
     const { email, password } = this.state;
+    const { history } = this.props;
+    auth.HandleLogin(email, password)
+      .then(() => {
+        console.log(this.state)
+        history.push(routes.HOME_PAGE);
+      })
+      .catch(error => {
+        this.setState(updateByPropertyName("error", error));
+      });
     e.preventDefault();
-    try {
-      const response = await auth.HandleLogin(email, password);
-      console.log(`Logged as ${response.user.email}`);
-      this.setState({ fireRedirect: true });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  handleResetPassword = async () => {
-    console.log("reset password...");
   };
 
   render() {
-    const { fireRedirect } = this.state;
+    const { email, password, error } = this.state;
+    const isInvalid = password === "" || email === "";
+
     return (
-      <div>
-        {fireRedirect && <Redirect to={routes.ADMIN_PAGE} />}
-        <div className="background-image" />
-        <div className="login-page">
-          <div className="form">
-            <form className="login-form" onSubmit={this.handleSubmit}>
-              <input
-                type="email"
-                placeholder="username"
-                name="email"
-                onChange={this.handleChange}
-                value={this.state.email}
-                required
-              />
-              <input
-                type="password"
-                placeholder="password"
-                name="password"
-                onChange={this.handleChange}
-                value={this.state.password}
-                required
-              />
-              <button type="submit">login</button>
-              <p className="message">
-                Has olvidado la contraseña?{" "}
-                <span onClick={this.handleResetPassword}>
-                  Solicita una nueva
-                </span>
-              </p>
-            </form>
-          </div>
-        </div>
-      </div>
+      <form onSubmit={this.onSubmit}>
+        <input
+          value={email}
+          onChange={event =>
+            this.setState(updateByPropertyName("email", event.target.value))
+          }
+          type="text"
+          placeholder="Email Address"
+        />
+        <input
+          value={password}
+          onChange={event =>
+            this.setState(updateByPropertyName("password", event.target.value))
+          }
+          type="password"
+          placeholder="Password"
+        />
+        <button disabled={isInvalid} type="submit">
+          Sign In
+        </button>
+
+        {error && <p>{error.message}</p>}
+      </form>
     );
   }
 }
 
-export default LoginComponent;
+export default withRouter(SignInPage);
+
+export { SignInForm };

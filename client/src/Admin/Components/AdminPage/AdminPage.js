@@ -1,14 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 
-class AdminPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+import AuthUserContext from "../../Services/Session/AuthUserContext";
+import withAuthorization from "../../Services/Session/WithAuthorization";
 
-  render() {
-    return <h1>This is the AdminPage</h1>;
-  }
-}
+const AdminPage = () => (
+  <AuthUserContext.Consumer>
+    {authUser => (
+      <div>
+        <h1>Account: {authUser.email}</h1>
+      </div>
+    )}
+  </AuthUserContext.Consumer>
+);
 
-export default AdminPage;
+const authCondition = authUser => !!authUser;
+
+export default withAuthorization(authCondition)(AdminPage);
