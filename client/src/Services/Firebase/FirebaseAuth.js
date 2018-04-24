@@ -1,4 +1,4 @@
-import { auth } from "./FIREBASE.service";
+import { auth } from "./FirebaseService";
 
 export const HandleLogin = async (email, password) => {
   const response = await auth.signInAndRetrieveDataWithEmailAndPassword(

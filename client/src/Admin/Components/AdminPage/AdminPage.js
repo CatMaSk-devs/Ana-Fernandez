@@ -1,7 +1,7 @@
 import React from "react";
 
-import AuthUserContext from "../../Services/Session/AuthUserContext";
-import withAuthorization from "../../Services/Session/WithAuthorization";
+import AuthUserContext from "../../../Services/Session/AuthUserContext";
+import withAuthorization from "../../../Services/Session/WithAuthorization";
 
 const AdminPage = () => (
   <AuthUserContext.Consumer>

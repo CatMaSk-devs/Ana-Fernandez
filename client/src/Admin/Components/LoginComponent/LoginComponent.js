@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
-import { auth } from "../../Services/FIREBASE";
-import * as routes from "../../../CONSTANTS/routes";
+import { auth } from "../../../Services/Firebase";
+import * as routes from "../../../Constants/routes";
 
 const SignInPage = ({ history }) => (
   <div>
@@ -32,9 +32,9 @@ class SignInForm extends Component {
     const { email, password } = this.state;
     const { history } = this.props;
     auth.HandleLogin(email, password)
-      .then(() => {
-        console.log(this.state)
-        history.push(routes.HOME_PAGE);
+      .then((response) => {
+        console.log(`Logged as ${response.user.email}`)
+        history.push(routes.ADMIN_PAGE);
       })
       .catch(error => {
         this.setState(updateByPropertyName("error", error));
