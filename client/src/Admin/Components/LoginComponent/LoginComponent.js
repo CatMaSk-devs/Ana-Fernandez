@@ -4,9 +4,10 @@ import { withRouter } from "react-router-dom";
 import { auth } from "../../../Services/Firebase";
 import * as routes from "../../../Constants/routes";
 
+import './LoginComponent.css'
+
 const SignInPage = ({ history }) => (
   <div>
-    <h1>SignIn</h1>
     <SignInForm history={history} />
   </div>
 );
@@ -47,29 +48,41 @@ class SignInForm extends Component {
     const isInvalid = password === "" || email === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={email}
-          onChange={event =>
-            this.setState(updateByPropertyName("email", event.target.value))
-          }
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          value={password}
-          onChange={event =>
-            this.setState(updateByPropertyName("password", event.target.value))
-          }
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
-
-        {error && <p>{error.message}</p>}
-      </form>
+      <div>
+        <div className="background-image" />
+        <div className="login-page">
+          <div className="form">
+            <form onSubmit={this.onSubmit}>
+              <input
+                value={email}
+                onChange={event =>
+                  this.setState(updateByPropertyName("email", event.target.value))
+                }
+                type="text"
+                placeholder="Email Address"
+              />
+              <input
+                value={password}
+                onChange={event =>
+                  this.setState(updateByPropertyName("password", event.target.value))
+                }
+                type="password"
+                placeholder="Password"
+              />
+              <button disabled={isInvalid} type="submit">
+                Sign In
+              </button>
+              <p className="message">
+                Has olvidado la contraseña?{" "}
+                <span onClick={this.handleResetPassword}>
+                  Solicita una nueva
+                </span>
+              </p>
+              {error && <p>{error.message}</p>}
+            </form>
+          </div>
+        </div>
+      </div>
     );
   }
 }
