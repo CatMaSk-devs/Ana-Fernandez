@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 
 import { auth } from "../../../Services/Firebase";
+import { PasswordForgetLink } from '../PasswordForget/PasswordForget';
 import * as routes from "../../../Constants/routes";
 
 import './LoginComponent.css'
@@ -74,8 +75,8 @@ class SignInForm extends Component {
               </button>
               <p className="message">
                 Has olvidado la contraseña?{" "}
-                <span onClick={this.handleResetPassword}>
-                  Solicita una nueva
+                <span>
+                  <Link to={routes.PASSWORD_FORGET}> Solicita una nueva</Link>
                 </span>
               </p>
               {error && <p>{error.message}</p>}
