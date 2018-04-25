@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { auth } from '../../../Services/Firebase';
 
+import './PasswordChange.css'
+
 const updateByPropertyName = (propertyName, value) => () => ({
   [propertyName]: value,
 });
@@ -11,10 +13,6 @@ const INITIAL_STATE = {
   passwordTwo: '',
   error: null,
 };
-
-const handleRenderPasswordChangeForm = () => {
-  return <PasswordChangeForm/>
-}
 
 class PasswordChangeForm extends Component {
   constructor(props) {
@@ -49,26 +47,29 @@ class PasswordChangeForm extends Component {
       passwordOne === '';
 
     return (
-      <div className="form">
-        <form onSubmit={this.onSubmit}>
-          <input
-            value={passwordOne}
-            onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
-            type="password"
-            placeholder="New Password"
-          />
-          <input
-            value={passwordTwo}
-            onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
-            type="password"
-            placeholder="Confirm New Password"
-          />
-          <button disabled={isInvalid} type="submit">
-            Reset My Password
-          </button>
+      <div>
+        <div className="background"/>
+        <div className="form">
+          <form onSubmit={this.onSubmit}>
+            <input
+              value={passwordOne}
+              onChange={event => this.setState(updateByPropertyName('passwordOne', event.target.value))}
+              type="password"
+              placeholder="New Password"
+            />
+            <input
+              value={passwordTwo}
+              onChange={event => this.setState(updateByPropertyName('passwordTwo', event.target.value))}
+              type="password"
+              placeholder="Confirm New Password"
+            />
+            <button disabled={isInvalid} type="submit">
+              Reset My Password
+            </button>
 
-          { error && <p>{error.message}</p> }
-        </form>
+            { error && <p>{error.message}</p> }
+          </form>
+        </div>
       </div>
     );
   }
