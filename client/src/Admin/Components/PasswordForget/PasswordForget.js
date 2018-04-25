@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../../Services/Firebase';
 import * as routes from '../../../Constants/routes';
 
+import './PasswordForget.css'
+
 const PasswordForgetPage = () =>
   <div>
-    <h1>PasswordForget</h1>
     <PasswordForgetForm />
   </div>
 
@@ -40,6 +41,10 @@ class PasswordForgetForm extends Component {
     event.preventDefault();
   }
 
+  handleOnFocus = () => {
+    this.setState({ ...INITIAL_STATE })
+  }
+
   render() {
     const {
       email,
@@ -49,19 +54,22 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={this.state.email}
-          onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <div className="form">
+        <form onSubmit={this.onSubmit}>
+          <input
+            value={this.state.email}
+            onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+            onFocus={this.handleOnFocus}
+            type="text"
+            placeholder="Email Address"
+          />
+          <button disabled={isInvalid} type="submit">
+            Reset My Password
+          </button>
 
-        { error && <p>{error.message}</p> }
-      </form>
+          { error && <p>{error.message}</p> }
+        </form>
+      </div>
     );
   }
 }
