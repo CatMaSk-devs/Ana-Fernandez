@@ -1,4 +1,4 @@
-const JSON = {
+const TEXTS = {
   ERROR_TEXT: {
     PASSWORD_CHANGE: {
       MATCH: "Passwords do not match"
@@ -6,4 +6,4 @@ const JSON = {
   }
 };
 
-export default JSON
+export default TEXTS

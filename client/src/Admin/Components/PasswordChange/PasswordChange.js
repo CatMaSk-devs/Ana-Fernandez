@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { auth } from '../../../Services/Firebase';
-import JSON from '../../../Texts/Texts';
+import TEXTS from '../../../Texts/Texts';
 import CONSTANTS from '../../../Constants/constants';
 
 import './PasswordChange.css';
@@ -34,7 +34,7 @@ class PasswordChangeForm extends Component {
         if (error.code === CONSTANTS.ERROR_CODE.PASSWORD_MATCH) {
           this.setState({
             error: {
-              message: JSON.ERROR_TEXT.PASSWORD_CHANGE.MATCH
+              message: TEXTS.ERROR_TEXT.PASSWORD_CHANGE.MATCH
             }
           });
         } else {
