@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import firebase from 'firebase';
 
-import storageRef from '../../../Services/Firebase/FirebaseStorage';
-import snapshot from '../../../Services/Firebase/FirebaseDB';
+import storageRef from '../../../../../Services/Firebase/FirebaseStorage';
+import snapshot from '../../../../../Services/Firebase/FirebaseDB';
 
 class DropZone extends Component {
   constructor() {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { auth } from '../../../Services/Firebase';
-import TEXTS from '../../../Texts/Texts';
-import CONSTANTS from '../../../Constants/constants';
+import { auth } from '../../../../../Services/Firebase';
+import TEXTS from '../../../../../Texts/Texts';
+import CONSTANTS from '../../../../../Constants/constants';
 
 import './PasswordChange.css';
 

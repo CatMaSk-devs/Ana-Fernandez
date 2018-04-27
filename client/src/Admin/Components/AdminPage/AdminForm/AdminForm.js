@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import ViewCollection from '../ViewCollection/ViewCollection';
-import AddCollection from '../AddCollection/AddCollection';
-import EditCollection from '../EditCollection/EditCollection';
-import RemoveCollection from '../RemoveCollection/RemoveCollection';
+import ViewCollection from './ViewCollection/ViewCollection';
+import AddCollection from './AddCollection/AddCollection';
+import EditCollection from './EditCollection/EditCollection';
+import RemoveCollection from './RemoveCollection/RemoveCollection';
 
-import TEXTS from '../../../Texts/Texts'
+import TEXTS from '../../../Texts/Texts';
 
 import './AdminForm.css'
 

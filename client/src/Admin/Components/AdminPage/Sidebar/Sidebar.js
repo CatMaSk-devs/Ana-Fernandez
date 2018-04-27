@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import TEXTS from '../../../Texts/Texts';
+import TEXTS from '../../../../Texts/Texts';
 
 class Sidebar extends Component {
   constructor(props) {
