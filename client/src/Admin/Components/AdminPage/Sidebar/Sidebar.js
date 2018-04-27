@@ -16,6 +16,7 @@ class Sidebar extends Component {
         <button onClick={() => this.handleOnClick(TEXTS.ASIDE_BUTTONS.ADD_COLLECTION)}>{TEXTS.ASIDE_BUTTONS.ADD_COLLECTION}</button>
         <button onClick={() => this.handleOnClick(TEXTS.ASIDE_BUTTONS.EDIT_COLECTION)}>{TEXTS.ASIDE_BUTTONS.EDIT_COLECTION}</button>
         <button onClick={() => this.handleOnClick(TEXTS.ASIDE_BUTTONS.REMOVE_COLLECTION)}>{TEXTS.ASIDE_BUTTONS.REMOVE_COLLECTION}</button>
+        <button onClick={() => this.handleOnClick(TEXTS.ASIDE_BUTTONS.PASSWORD_CHANGE)}>{TEXTS.ASIDE_BUTTONS.PASSWORD_CHANGE}</button>
       </div>
     )
   }
