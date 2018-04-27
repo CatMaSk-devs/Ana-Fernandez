@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
+import firebase from 'firebase';
+
+import storageRef from '../../../Services/Firebase/FirebaseStorage';
+import snapshot from '../../../Services/Firebase/FirebaseDB';
 
 class DropZone extends Component {
   constructor() {
@@ -10,7 +14,20 @@ class DropZone extends Component {
   }
 
   onDrop(files) {
-    this.setState({ files });
+    console.log(files)
+    const file = files[0];
+    const storageRef = firebase.storage().ref(`/photos/${file.name}`);
+    const task = storageRef.put(file);
+    task.on("state_changed", snapshot => {
+      console.log(snapshot)
+        const record = {
+          image: task.snapshot.downloadURL
+        };
+        const dbRef = firebase.database().ref("pictures");
+        const newPicture = dbRef.push();
+        newPicture.set(record);
+      }
+    );
   }
 
   render() {

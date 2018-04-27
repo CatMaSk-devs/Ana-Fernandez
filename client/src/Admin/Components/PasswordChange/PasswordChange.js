@@ -23,26 +23,15 @@ class PasswordChangeForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = (event) => {
+  onSubmit = e => {
+    e.preventDefault();
     const { passwordOne } = this.state;
 
     auth.HandlePasswordUpdate(passwordOne)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }));
       })
-      .catch(error => {
-        if (error.code === CONSTANTS.ERROR_CODE.PASSWORD_MATCH) {
-          this.setState({
-            error: {
-              message: TEXTS.ERROR_TEXT.PASSWORD_CHANGE.MATCH
-            }
-          });
-        } else {
-          this.setState(updateByPropertyName('error', error));
-        }
-      });
-
-    event.preventDefault();
+      .catch(error => this.setState(updateByPropertyName('error', error)))
   }
 
   handleOnFocus = () => {
