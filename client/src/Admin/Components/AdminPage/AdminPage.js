@@ -4,6 +4,7 @@ import AuthUserContext from "../../../Services/Session/AuthUserContext";
 import withAuthorization from "../../../Services/Session/WithAuthorization";
 import SignOutButton from '../SignOut/SignOut';
 import PasswordChangeForm from '../PasswordChange/PasswordChange';
+import DropZone from '../DropZone/DropZone';
 
 const AdminPage = () => (
   <AuthUserContext.Consumer>
@@ -11,6 +12,7 @@ const AdminPage = () => (
       <div>
         <SignOutButton/>
         <PasswordChangeForm/>
+
       </div>
     )}
   </AuthUserContext.Consumer>

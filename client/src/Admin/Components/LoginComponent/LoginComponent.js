@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 import { auth } from "../../../Services/Firebase";
-import { PasswordForgetLink } from '../PasswordForget/PasswordForget';
 import * as routes from "../../../Constants/routes";
 
 import './LoginComponent.css'
