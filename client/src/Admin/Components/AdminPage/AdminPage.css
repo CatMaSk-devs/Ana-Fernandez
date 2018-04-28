@@ -1,0 +1,30 @@
+.admin_header {
+  /* border: 1px solid black; */
+  grid-area: header;
+  display: flex;
+  justify-content: flex-end;
+}
+.admin_sidebar {
+  /* border: 1px solid black; */
+  grid-area: sidebar;
+}
+.admin_main {
+  /* border: 1px solid black; */
+  grid-area: main;
+}
+.admin_footer {
+  /* border: 1px solid black; */
+  grid-area: footer;
+}
+
+.admin_content {
+  margin: 0 10px;
+  display: grid;
+  grid-template-columns: 30vh 70vh;
+  grid-template-rows: 10vh 78vh 10vh;
+  grid-gap: 10px;
+  grid-template-areas:
+    "header header header header"
+    "sidebar main main main"
+    "footer footer footer footer";
+}

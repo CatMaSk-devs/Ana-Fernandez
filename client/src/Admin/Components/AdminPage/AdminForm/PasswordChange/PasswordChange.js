@@ -53,7 +53,7 @@ class PasswordChangeForm extends Component {
     return (
       <div>
         <div className="background"/>
-        <div className="form">
+        <div className="form_password_change">
           <form onSubmit={this.onSubmit}>
             <input
               value={passwordOne}

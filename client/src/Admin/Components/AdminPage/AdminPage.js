@@ -4,7 +4,9 @@ import AuthUserContext from "../../../Services/Session/AuthUserContext";
 import withAuthorization from "../../../Services/Session/WithAuthorization";
 import SignOutButton from '../SignOut/SignOut';
 import Sidebar from './Sidebar/Sidebar';
-import AdminForm from './AdminForm/AdminForm'
+import AdminForm from './AdminForm/AdminForm';
+
+import './AdminPage.css'
 
 class AdminPage extends Component {
   constructor(props) {
@@ -23,10 +25,17 @@ class AdminPage extends Component {
     return (
       <AuthUserContext.Consumer>
         {authUser => (
-          <div>
-            <SignOutButton/>
-            <Sidebar onSelect={this.handleOnSelect}/>
-            <AdminForm onSelected={component}/>
+          <div className="admin_content">
+            <div className="admin_header">
+              <SignOutButton/>
+            </div>
+            <div className="admin_sidebar">
+              <Sidebar onSelect={this.handleOnSelect}/>
+            </div>
+            <div className="admin_main">
+              <AdminForm onSelected={component}/>
+            </div>
+            <div className="admin_footer"></div>
           </div>
         )}
       </AuthUserContext.Consumer>

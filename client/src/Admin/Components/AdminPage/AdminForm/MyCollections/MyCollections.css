@@ -1,0 +1,9 @@
+.collections_gallery {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.collections_gallery, .collection, img {
+  width: 400px;
+}

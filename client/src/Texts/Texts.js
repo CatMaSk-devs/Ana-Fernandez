@@ -5,10 +5,10 @@ const TEXTS = {
     }
   },
   ASIDE_BUTTONS: {
-    REMOVE_COLLECTION: 'Eliminar colección',
+    MY_COLLECTIONS: 'Mis colecciones',
     ADD_COLLECTION: 'Añadir colección',
+    REMOVE_COLLECTION: 'Eliminar colección',
     EDIT_COLECTION: 'Editar colección',
-    VIEW_COLLECTION: 'Ver colección',
     PASSWORD_CHANGE: 'Cambiar contraseña'
   }
 };
