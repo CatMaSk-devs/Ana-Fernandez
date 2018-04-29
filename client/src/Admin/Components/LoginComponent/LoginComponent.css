@@ -107,8 +107,8 @@
   left: 0;
   right: 0;
   z-index: 1;
-  background-image: url('../../../images/workshop-background.jpeg');
-  filter: blur(6px) grayscale(100%) contrast(1.5);
+  /* background-image: url('../../../Images/workshop-background.jpeg'); */
+  /* filter: blur(6px) grayscale(100%) contrast(1.5); */
   ;
   width: 100%;
   height: 100vh;

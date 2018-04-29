@@ -1,9 +1,10 @@
 .collections_gallery {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
 }
 
-.collections_gallery, .collection, img {
+.collections_gallery .collection img {
   width: 400px;
+  align-self: flex-start;
 }
