@@ -15,7 +15,9 @@ class AdminPage extends Component {
     }
   }
 
-  handleOnSelect = component => this.setState({ component })
+  handleOnSelect = component => {
+    this.setState({ component })
+  }
 
   render() {
     const { component } = this.state

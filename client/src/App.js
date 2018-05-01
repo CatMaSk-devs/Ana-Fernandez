@@ -17,7 +17,7 @@ const App = () => (
       <Route exact path={`/${routes.PASSWORD_FORGET}`} component={() => <PasswordForgetPage />} />
       <Route exact path={`/${routes.SIGN_IN}`} component={() => <LoginComponent />} />
       <Route exact path={`/${routes.ADMIN_PAGE}`} component={() => <AdminPage />} />
-      <Route exact path={`/${routes.ADMIN_PAGE}/:component`} render={() => <AdminPage />} />
+      <Route exact path={`/${routes.ADMIN_PAGE}/:component`} component={() => <AdminPage />} />
     </div>
   </Router>
 );

@@ -14,8 +14,10 @@ class AdminForm extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ component: nextProps.onSelected })
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.onSelected) return { component: nextProps.onSelected }
+
+    return null
   }
 
   render() {
