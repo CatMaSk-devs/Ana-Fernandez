@@ -12,11 +12,12 @@ import "./index.css";
 
 const App = () => (
   <Router>
-    <div className="app">
-      <Route exact path={routes.SIGN_IN} component={() => <LoginComponent />} />
-      <Route exact path={routes.ADMIN_PAGE} component={() => <AdminPage />} />
-      <Route exact path={routes.HOME_PAGE} component={() => <HomePage />} />
-      <Route exact path={routes.PASSWORD_FORGET} component={() => <PasswordForgetPage />} />
+  <div className="app">
+      <Route exact path='/' component={() => <HomePage />} />
+      <Route exact path={`/${routes.PASSWORD_FORGET}`} component={() => <PasswordForgetPage />} />
+      <Route exact path={`/${routes.SIGN_IN}`} component={() => <LoginComponent />} />
+      <Route exact path={`/${routes.ADMIN_PAGE}`} component={() => <AdminPage />} />
+      <Route exact path={`/${routes.ADMIN_PAGE}/:component`} render={() => <AdminPage />} />
     </div>
   </Router>
 );

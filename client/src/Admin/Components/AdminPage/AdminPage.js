@@ -26,7 +26,7 @@ class AdminPage extends Component {
           <div>
             <SignOutButton/>
             <Sidebar onSelect={this.handleOnSelect}/>
-            <AdminForm onSelected={component}/>
+            <AdminForm onSelected={component} />
           </div>
         )}
       </AuthUserContext.Consumer>

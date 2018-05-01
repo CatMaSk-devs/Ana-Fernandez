@@ -5,8 +5,9 @@ import AuthUserContext from "./AuthUserContext";
 import { firebase } from "../Firebase";
 import * as routes from "../../Constants/routes";
 
-const withAuthorization = condition => Component => {
+const withAuthorization = (condition) => Component => {
   class WithAuthorization extends React.Component {
+
     componentDidMount() {
       firebase.auth.onAuthStateChanged(authUser => {
         if (!condition(authUser)) {
@@ -18,7 +19,7 @@ const withAuthorization = condition => Component => {
     render() {
       return (
         <AuthUserContext.Consumer>
-          {authUser => (authUser ? <Component /> : null)}
+          {(authUser) => (authUser ? <Component {...this.props}/> : null)}
         </AuthUserContext.Consumer>
       );
     }

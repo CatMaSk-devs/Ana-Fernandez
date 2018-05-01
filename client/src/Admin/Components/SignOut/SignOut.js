@@ -5,11 +5,7 @@ import { auth } from '../../../Services/Firebase';
 import './SignOut.css';
 
 const SignOutButton = () =>
-  <button
-    className="btn"
-    type="button"
-    onClick={auth.HandleSignOut}
-  >
+  <button className="btn" type="button" onClick={auth.HandleSignOut}>
     Sign Out
   </button>
 

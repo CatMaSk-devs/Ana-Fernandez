@@ -7,7 +7,7 @@ const TEXTS = {
   ASIDE_BUTTONS: {
     REMOVE_COLLECTION: 'Eliminar colección',
     ADD_COLLECTION: 'Añadir colección',
-    EDIT_COLECTION: 'Editar colección',
+    EDIT_COLLECTION: 'Editar colección',
     VIEW_COLLECTION: 'Ver colección',
     PASSWORD_CHANGE: 'Cambiar contraseña'
   }
