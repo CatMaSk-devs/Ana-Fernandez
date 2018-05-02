@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 
 import AuthUserContext from "./AuthUserContext";
 import { firebase } from "../Firebase";
+
 import * as routes from "../../Constants/routes";
 
 const withAuthorization = (condition) => Component => {
@@ -19,7 +20,7 @@ const withAuthorization = (condition) => Component => {
     render() {
       return (
         <AuthUserContext.Consumer>
-          {(authUser) => (authUser ? <Component {...this.props}/> : null)}
+          {(authUser) => (authUser ? <Component /> : null)}
         </AuthUserContext.Consumer>
       );
     }

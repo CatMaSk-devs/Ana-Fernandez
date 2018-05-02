@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { auth } from '../../../Services/Firebase';
+
 import * as routes from '../../../Constants/routes';
 
 import './PasswordForget.css'
@@ -27,7 +28,7 @@ class PasswordForgetForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = (event) => {
+  onSubmit = e => {
     const { email } = this.state;
 
     auth.HandlePasswordReset(email)
@@ -38,7 +39,7 @@ class PasswordForgetForm extends Component {
         this.setState(updateByPropertyName('error', error));
       });
 
-    event.preventDefault();
+    e.preventDefault();
   }
 
   handleOnFocus = () => {
@@ -57,8 +58,8 @@ class PasswordForgetForm extends Component {
       <div className="form">
         <form onSubmit={this.onSubmit}>
           <input
-            value={this.state.email}
-            onChange={event => this.setState(updateByPropertyName('email', event.target.value))}
+            value={email}
+            onChange={e => this.setState(updateByPropertyName('email', e.target.value))}
             onFocus={this.handleOnFocus}
             type="text"
             placeholder="Email Address"

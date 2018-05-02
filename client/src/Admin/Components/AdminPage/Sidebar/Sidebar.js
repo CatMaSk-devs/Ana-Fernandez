@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-import TEXTS from '../../../../Texts/Texts';
-import * as routes from '../../../../Constants/routes'
 import { Link } from 'react-router-dom';
 
 import ViewCollection from '../AdminForm/ViewCollection/ViewCollection';
@@ -9,6 +6,9 @@ import AddCollection from '../AdminForm/AddCollection/AddCollection';
 import EditCollection from '../AdminForm/EditCollection/EditCollection';
 import RemoveCollection from '../AdminForm/RemoveCollection/RemoveCollection';
 import PasswordChange from '../AdminForm/PasswordChange/PasswordChange';
+
+import TEXTS from '../../../../Texts/Texts';
+import * as routes from '../../../../Constants/routes'
 
 class Sidebar extends Component {
   constructor(props) {
