@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 import { auth } from '../../../../../Services/Firebase';
-import TEXTS from '../../../../../Texts/Texts';
-import CONSTANTS from '../../../../../Constants/constants';
 
 import './PasswordChange.css';
 
@@ -45,10 +43,6 @@ class PasswordChangeForm extends Component {
       passwordTwo,
       error,
     } = this.state;
-
-    const isInvalid =
-      passwordOne !== passwordTwo ||
-      passwordOne === '';
 
     return (
       <div>

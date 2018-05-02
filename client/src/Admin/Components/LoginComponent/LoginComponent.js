@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 import { auth } from "../../../Services/Firebase";
+
 import * as routes from "../../../Constants/routes";
 
 import './LoginComponent.css'
@@ -55,16 +56,16 @@ class SignInForm extends Component {
             <form onSubmit={this.onSubmit}>
               <input
                 value={email}
-                onChange={event =>
-                  this.setState(updateByPropertyName("email", event.target.value))
+                onChange={e =>
+                  this.setState(updateByPropertyName("email", e.target.value))
                 }
                 type="text"
                 placeholder="Email Address"
               />
               <input
                 value={password}
-                onChange={event =>
-                  this.setState(updateByPropertyName("password", event.target.value))
+                onChange={e =>
+                  this.setState(updateByPropertyName("password", e.target.value))
                 }
                 type="password"
                 placeholder="Password"
