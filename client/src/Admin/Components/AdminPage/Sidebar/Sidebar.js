@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import ViewCollection from '../AdminForm/ViewCollection/ViewCollection';
+import MyCollections from '../AdminForm/MyCollections/MyCollections';
 import AddCollection from '../AdminForm/AddCollection/AddCollection';
 import EditCollection from '../AdminForm/EditCollection/EditCollection';
 import RemoveCollection from '../AdminForm/RemoveCollection/RemoveCollection';
@@ -27,19 +27,19 @@ class Sidebar extends Component {
 
     return (
       <div className="sidebar_container">
-        <button onClick={()=> this.handleOnClick(ViewCollection)}>
-          <Link to={`/${routes.ADMIN_PAGE}/${routes.VIEW_COLLECTION}`}>{TEXTS.ASIDE_BUTTONS.VIEW_COLLECTION}</Link>
+        <button className="btn" onClick={()=> this.handleOnClick(MyCollections)}>
+          <Link to={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`}>{TEXTS.ASIDE_BUTTONS.MY_COLLECTIONS}</Link>
         </button>
-        <button onClick={()=> this.handleOnClick(AddCollection)}>
+        <button className="btn" onClick={()=> this.handleOnClick(AddCollection)}>
           <Link to={`/${routes.ADMIN_PAGE}/${routes.ADD_COLLECTION}`}>{TEXTS.ASIDE_BUTTONS.ADD_COLLECTION}</Link>
         </button>
-        <button onClick={()=> this.handleOnClick(EditCollection)}>
+        <button className="btn" onClick={()=> this.handleOnClick(EditCollection)}>
           <Link to={`/${routes.ADMIN_PAGE}/${routes.EDIT_COLLECTION}`}>{TEXTS.ASIDE_BUTTONS.EDIT_COLLECTION}</Link>
         </button>
-        <button onClick={()=> this.handleOnClick(RemoveCollection)}>
+        <button className="btn" onClick={()=> this.handleOnClick(RemoveCollection)}>
           <Link to={`/${routes.ADMIN_PAGE}/${routes.REMOVE_COLLECTION}`}>{TEXTS.ASIDE_BUTTONS.REMOVE_COLLECTION}</Link>
         </button>
-        <button onClick={()=> this.handleOnClick(PasswordChange)}>
+        <button className="btn" onClick={()=> this.handleOnClick(PasswordChange)}>
           <Link to={`/${routes.ADMIN_PAGE}/${routes.PASSWORD_CHANGE}`}>{TEXTS.ASIDE_BUTTONS.PASSWORD_CHANGE}</Link>
         </button>
       </div>

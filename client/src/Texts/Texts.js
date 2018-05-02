@@ -8,7 +8,7 @@ const TEXTS = {
     MY_COLLECTIONS: 'Mis colecciones',
     ADD_COLLECTION: 'Añadir colección',
     REMOVE_COLLECTION: 'Eliminar colección',
-    EDIT_COLECTION: 'Editar colección',
+    EDIT_COLLECTION: 'Editar colección',
     PASSWORD_CHANGE: 'Cambiar contraseña'
   }
 };
