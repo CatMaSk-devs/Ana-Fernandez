@@ -25,7 +25,7 @@ class AdminForm extends Component {
 
     return (
       <div>
-        { component && <Route exact path={`/${routes.ADMIN_PAGE}/:component`} component={component}></Route> }
+        { component && <Route path={`/${routes.ADMIN_PAGE}/:component`} component={component}></Route> }
       </div>
     )
   }
