@@ -5,10 +5,6 @@
   justify-content: flex-end;
   align-items: center;
 }
-.admin_sidebar {
-  /* border: 1px solid black; */
-  grid-area: sidebar;
-}
 .admin_main {
   /* border: 1px solid black; */
   grid-area: main;
@@ -26,6 +22,6 @@
   grid-gap: 10px;
   grid-template-areas:
     "header header header header"
-    "sidebar main main main"
+    "main main main main"
     "footer footer footer footer";
 }

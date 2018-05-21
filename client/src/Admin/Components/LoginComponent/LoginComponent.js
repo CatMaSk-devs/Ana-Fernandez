@@ -36,7 +36,7 @@ class SignInForm extends Component {
     auth.HandleLogin(email, password)
       .then((response) => {
         console.log(`Logged as ${response.user.email}`)
-        history.push(routes.ADMIN_PAGE);
+        history.push(`${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`);
       })
       .catch(error => {
         this.setState(updateByPropertyName("error", error));

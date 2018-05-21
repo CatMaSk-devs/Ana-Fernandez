@@ -6,3 +6,5 @@ export const ADD_COLLECTION = 'add-collection';
 export const EDIT_COLLECTION = 'edit-collection';
 export const REMOVE_COLLECTION = 'remove-collection';
 export const PASSWORD_CHANGE = 'password-change';
+export const COLLECTION_COVER = 'collection-cover'
+export const COLLECTION_ITEMS = 'collection-items'

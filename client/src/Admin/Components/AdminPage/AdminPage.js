@@ -1,10 +1,15 @@
 import React, { Component } from "react";
+import { Link, Route } from 'react-router-dom';
 
 import AuthUserContext from "../../../Services/Session/AuthUserContext";
 import withAuthorization from "../../../Services/Session/WithAuthorization";
 import SignOutButton from '../SignOut/SignOut';
 import Sidebar from './Sidebar/Sidebar';
 import AdminForm from './AdminForm/AdminForm';
+import MyCollections from './AdminForm/MyCollections/MyCollections'
+import EditCollection from './AdminForm/EditCollection/EditCollection'
+
+import * as routes from '../../../Constants/routes'
 
 import './AdminPage.css'
 
@@ -31,11 +36,9 @@ class AdminPage extends Component {
             <div className="admin_header">
               <SignOutButton/>
             </div>
-            <div className="admin_sidebar">
-              <Sidebar onSelect={this.handleOnSelect}/>
-            </div>
             <div className="admin_main">
-              <AdminForm onSelected={component}/>
+              <Route exact path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`} component={MyCollections}></Route>
+              <Route path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}`} component={EditCollection}></Route>
             </div>
             <div className="admin_footer"></div>
           </div>

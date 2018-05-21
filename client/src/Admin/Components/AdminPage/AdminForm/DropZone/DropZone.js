@@ -7,7 +7,7 @@ import storageRef from '../../../../../Services/Firebase/FirebaseStorage';
 import snapshot from '../../../../../Services/Firebase/FirebaseDB';
 
 class DropZone extends Component {
-  constructor() {
+  constructor(props) {
     super()
     this.state = {
       files: []
@@ -32,11 +32,13 @@ class DropZone extends Component {
   }
 
   render() {
+    const { match } = this.props
+
     return (
       <section>
         <div className="dropzone">
           <Dropzone onDrop={this.onDrop.bind(this)}>
-            <p>Try dropping some files here, or click to select files to upload.</p>
+            <p>{match.url}</p>
           </Dropzone>
         </div>
         <aside>
