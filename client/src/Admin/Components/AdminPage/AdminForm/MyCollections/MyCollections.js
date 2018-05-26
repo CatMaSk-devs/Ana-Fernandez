@@ -34,7 +34,7 @@ const MyCollections = (props) => {
           <button>Eliminar colección</button>
         </div>
       ))}
-      <Link to={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}`}>Forgot Password?</Link>
+      <Link to={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}/${routes.ADD_COLLECTION_TITLE}`}>Crear colección</Link>
     </div>
   )
 }
