@@ -45,22 +45,11 @@ class AddCollectionForm extends Component {
     this.setState({ item_files })
   }
 
-  uploadImage = async image_file => {
+  uploadImage = image_file => {
     const { id } = this.props.match.params
     const { image_download_url } = this.state
     const storageRef = firebase.storage().ref(`/${id}/${image_file.name}`);
-    const task = storageRef.put(image_file)
-    await task.on('state_changed', snapshot => {
-      const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      this.setState({
-        upload_value: percentage
-      })}, error => {
-        console.log(error.message)
-      }, ()=> {
-        return task.snapshot.downloadURL
-
-      }
-    );
+    return new Promise((resolve, reject) => storageRef.put(image_file).then(resolve))
   }
 
   handleSubmit = async e => {
@@ -70,13 +59,11 @@ class AddCollectionForm extends Component {
     const images = image_files.map(image_file => {
         return this.uploadImage(image_file)
       })
-    const url = await Promise.all(images)
-    console.log(url)
-    // this.setState({
-    //   upload_value: 100,
-    //   image_download_url: response
-    // });
-    // console.log(image_download_url)
+    const snapshots = await Promise.all(images)
+    this.setState({
+       upload_value: 100,
+       image_download_url: snapshots.map(s => s.downloadURL)
+    });
   }
 
   render () {
