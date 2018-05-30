@@ -1,12 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.add-collection-page {
+.add-collection-form__content {
   width: 500px;
-  padding: 8% 0 0;
+  padding: 0;
   margin: auto;
 }
 
- .add-collection-form {
+ .add-collection-form__form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
@@ -17,11 +17,11 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
-.add-collection-form textarea {
+.add-collection-form__form textarea {
   resize: vertical;
 }
 
- .add-collection-form input,  .add-collection-form textarea {
+ .add-collection-form__form input,  .add-collection-form__form textarea {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -33,7 +33,8 @@
   font-size: 14px;
 }
 
- .add-collection-form button {
+ .add-collection-form__form button {
+   margin-top: 15px;
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
@@ -48,19 +49,34 @@
   cursor: pointer;
 }
 
- .add-collection-form button:hover,
- .add-collection-form button:active,
- .add-collection-form button:focus {
+ .add-collection-form__form button:hover,
+ .add-collection-form__form button:active,
+ .add-collection-form__form button:focus {
   background: #7387d6;
 }
 
- .add-collection-form .message {
+ .add-collection-form__form .message {
   margin: 15px 0 0;
   color: #b3b3b3;
   font-size: 12px;
 }
 
- .add-collection-form .message span a {
+ .add-collection-form__form .message span a {
   color: #687bcd;
   text-decoration: none;
+}
+
+.dropzone > div {
+  width : 100%!important;
+  height : 100px!important;
+  border : none!important;
+  background: #f2f2f2;
+  margin-bottom: 15px;
+}
+
+.dropzone p:first-child {
+  color: #757575;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  padding: 20px;
 }

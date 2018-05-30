@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
-
-import ViewCollection from './ViewCollection/ViewCollection';
+import { Link } from 'react-router-dom';
 
 import * as routes from '../../../../../Constants/routes'
 
@@ -14,15 +12,13 @@ const IMAGES = [
   { id: 3, url: "https://images.pexels.com/photos/1029929/pexels-photo-1029929.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260", alt: "Mountain View", title: "Mountain View" }
 ]
 
-const MyCollections = (props) => {
-  console.log(props)
+const MyCollections = () => {
 
   return (
     <div className="collections_gallery">
-      {IMAGES.map(image => (
-        <div>
+      {IMAGES.map((image, index) => (
+        <div key={index}>
           <Link className="collection"
-            key={image.id}
             to={{
               pathname: `/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${image.id}`,
               state: { modal: true }

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import TEXTS from '../../../../../Texts/Texts';
+
 import Dropzone from 'react-dropzone';
 
 class DropZone extends Component {
@@ -12,9 +14,12 @@ class DropZone extends Component {
 
   render() {
 
+    const { itemsForm, onDropItems, onDropCover } = this.props;
+
     return (
       <div className="dropzone">
-        <Dropzone onDrop={this.props.itemsForm ? this.props.onDropItems : this.props.onDropCover}>
+        <Dropzone onDrop={itemsForm ? onDropItems : onDropCover} multiple={itemsForm ? true : false}>
+          <p>{itemsForm ? TEXTS.DROPZONE.ITEM_IMAGES : TEXTS.DROPZONE.COVER_IMAGE}</p>
         </Dropzone>
       </div>
     );

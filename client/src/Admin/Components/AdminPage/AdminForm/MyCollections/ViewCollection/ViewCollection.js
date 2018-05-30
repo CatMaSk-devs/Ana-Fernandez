@@ -10,8 +10,6 @@ const IMAGES = [
 ]
 
 const ViewCollection = ({ match, history }) => {
-  console.log(match.url)
-  console.log(match.params)
 
   const image = IMAGES[parseInt(match.params.id, 10)];
   const back = e => {
