@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
 import firebase from 'firebase';
-import uuid from 'uuid';
 
-import { db } from '../../../../../../Services/Firebase/FirebaseService'
+import { db } from '../../../../../../Services/Firebase/FirebaseService';
 import DropZone from '../../DropZone/DropZone';
+import Spinner from '../../../../../../Providers/Spinner/Spinner';
+import ScrollSmooth from '../../../../../../Providers/ScrollSmooth/ScrollSmooth';
 
 import TEXTS from '../../../../../../Texts/Texts';
-import './AddCollectionForm.css'
+
+import './AddCollectionForm.css';
 
 const dbCollection = db.collection('collections')
 
@@ -23,6 +25,7 @@ class AddCollectionForm extends Component {
       cover_file: '',
       item_files: [],
       images_download_url: [],
+      loading: false
     }
   }
 
@@ -46,14 +49,16 @@ class AddCollectionForm extends Component {
     this.setState({ item_files })
   }
 
-  uploadImage = image_file => {
+  uploadImage = async image_file => {
     const { id } = this.state
-    const storageRef = firebase.storage().ref(`/${id}/${image_file.name}`);
+    const storageRef = await firebase.storage().ref(`/${id}/${image_file.name}`);
     return new Promise((resolve, reject) => storageRef.put(image_file).then(resolve))
   }
 
   handleSubmit = async e => {
     e.preventDefault()
+    this.setState({ loading: true })
+    ScrollSmooth()
     const { cover_file, item_files } = this.state;
     const image_files = [ ...cover_file, ...item_files ]
     const images = image_files.map(image_file => {
@@ -74,12 +79,12 @@ class AddCollectionForm extends Component {
       cover_image_url: images_download_url.shift(),
       collection_images_url: images_download_url
     }, { merge: true })
-    .then(() => console.log('upload finished...'))
+    .then(() => this.setState({ loading: false }))
     .catch((err) => console.log(err))
   }
 
   render () {
-    const { title, description, cover_file, item_files } = this.state
+    const { title, description, cover_file, item_files, loading } = this.state
 
     return (
       <div className="add-collection-form__content">
@@ -114,6 +119,7 @@ class AddCollectionForm extends Component {
             <button type="submit">Crear</button>
           </form>
         </div>
+        {loading && <Spinner/>}
       </div>
     )
   }

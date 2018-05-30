@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-import { db } from '../../../../../../Services/Firebase/FirebaseService'
+import { db } from '../../../../../../Services/Firebase/FirebaseService';
+import Spinner from '../../../../../../Providers/Spinner/Spinner';
 
-import * as routes from '../../../../../../Constants/routes'
+import * as routes from '../../../../../../Constants/routes';
 
-import './AddCollectionTitle.css'
+import './AddCollectionTitle.css';
 
 const dbCollection = db.collection('collections')
 
@@ -12,7 +13,8 @@ class AddCollectionTitle extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      title: ''
+      title: '',
+      loading: false
     }
   }
 
@@ -22,14 +24,16 @@ class AddCollectionTitle extends Component {
     })
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
+    this.setState({ loading: true })
     e.preventDefault()
     const { title } = this.state
     const { history, createCollection } = this.props
-    dbCollection.add({
+    await dbCollection.add({
       title
     })
     .then((docRef) => {
+      this.setState({ loading: false })
       createCollection(title)
       history.push(`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}/${routes.ADD_COLLECTION_FORM}/${docRef.id}`)
     })
@@ -37,7 +41,7 @@ class AddCollectionTitle extends Component {
   }
 
   render () {
-    const { title } = this.state
+    const { title, loading } = this.state
 
     return (
       <div className="add-collection-title__content">
@@ -52,6 +56,7 @@ class AddCollectionTitle extends Component {
             <button type="submit">Crear</button>
           </form>
         </div>
+        {loading && <Spinner/>}
       </div>
     )
   }
