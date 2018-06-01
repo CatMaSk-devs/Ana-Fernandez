@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter, Link } from "react-router-dom";
 
 import { auth } from "../../../Services/Firebase";
+import Spinner from '../../../Providers/Spinner/Spinner';
 
 import * as routes from "../../../Constants/routes";
 
@@ -13,14 +14,11 @@ const SignInPage = ({ history }) => (
   </div>
 );
 
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value
-});
-
 const INITIAL_STATE = {
   email: "",
   password: "",
-  error: null
+  error: null,
+  loading: false
 };
 
 class SignInForm extends Component {
@@ -30,22 +28,32 @@ class SignInForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = e => {
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  onSubmit = async e => {
+    e.preventDefault();
+    this.setState({ loading: true })
     const { email, password } = this.state;
     const { history } = this.props;
-    auth.HandleLogin(email, password)
-      .then((response) => {
-        console.log(`Logged as ${response.user.email}`)
-        history.push(`${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`);
-      })
-      .catch(error => {
-        this.setState(updateByPropertyName("error", error));
-      });
-    e.preventDefault();
+    await auth.HandleLogin(email, password)
+    .then((response) => {
+      history.push(`${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`);
+    })
+    .catch(error => {
+      this.setState({ error, loading: false });
+    });
   };
 
+  componentWillUnmount() {
+    this.setState({ loading: false })
+  }
+
   render() {
-    const { email, password, error } = this.state;
+    const { email, password, error, loading } = this.state;
     const isInvalid = password === "" || email === "";
 
     return (
@@ -56,20 +64,16 @@ class SignInForm extends Component {
             <form onSubmit={this.onSubmit}>
               <input
                 value={email}
-                onChange={e =>
-                  this.setState(updateByPropertyName("email", e.target.value))
-                }
+                name="email"
+                onChange={this.handleChange}
                 type="text"
-                placeholder="Email Address"
-              />
+                placeholder="Email Address"/>
               <input
                 value={password}
-                onChange={e =>
-                  this.setState(updateByPropertyName("password", e.target.value))
-                }
+                name="password"
+                onChange={this.handleChange}
                 type="password"
-                placeholder="Password"
-              />
+                placeholder="Password"/>
               <button disabled={isInvalid} type="submit">
                 Sign In
               </button>
@@ -83,6 +87,7 @@ class SignInForm extends Component {
             </form>
           </div>
         </div>
+        {loading && <Spinner/>}
       </div>
     );
   }

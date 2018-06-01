@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { auth } from '../../../Services/Firebase';
+import Spinner from '../../../Providers/Spinner/Spinner';
 
 import * as routes from '../../../Constants/routes';
 
@@ -12,13 +13,10 @@ const PasswordForgetPage = () =>
     <PasswordForgetForm />
   </div>
 
-const updateByPropertyName = (propertyName, value) => () => ({
-  [propertyName]: value,
-});
-
 const INITIAL_STATE = {
   email: '',
   error: null,
+  loading: false
 };
 
 class PasswordForgetForm extends Component {
@@ -28,18 +26,23 @@ class PasswordForgetForm extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
-  onSubmit = e => {
-    const { email } = this.state;
-
-    auth.HandlePasswordReset(email)
-      .then(() => {
-        this.setState(() => ({ ...INITIAL_STATE }));
-      })
-      .catch(error => {
-        this.setState(updateByPropertyName('error', error));
-      });
-
+  onSubmit = async e => {
     e.preventDefault();
+    const { email } = this.state;
+    this.setState({ loading: true })
+    await auth.HandlePasswordReset(email)
+    .then(() => {
+      this.setState(() => ({ ...INITIAL_STATE }));
+    })
+    .catch(error => {
+      this.setState({ error, loading: false });
+    });
+  }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   handleOnFocus = () => {
@@ -47,11 +50,7 @@ class PasswordForgetForm extends Component {
   }
 
   render() {
-    const {
-      email,
-      error,
-    } = this.state;
-
+    const { email, error, loading } = this.state;
     const isInvalid = email === '';
 
     return (
@@ -59,17 +58,17 @@ class PasswordForgetForm extends Component {
         <form onSubmit={this.onSubmit}>
           <input
             value={email}
-            onChange={e => this.setState(updateByPropertyName('email', e.target.value))}
+            name="email"
+            onChange={this.handleChange}
             onFocus={this.handleOnFocus}
             type="text"
-            placeholder="Email Address"
-          />
+            placeholder="Email Address"/>
           <button disabled={isInvalid} type="submit">
             Reset My Password
           </button>
-
           { error && <p>{error.message}</p> }
         </form>
+        {loading && <Spinner/>}
       </div>
     );
   }
@@ -82,7 +81,4 @@ const PasswordForgetLink = () =>
 
 export default PasswordForgetPage;
 
-export {
-  PasswordForgetForm,
-  PasswordForgetLink,
-};
+export { PasswordForgetForm, PasswordForgetLink };

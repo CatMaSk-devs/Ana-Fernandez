@@ -14,6 +14,7 @@ class AddCollectionTitle extends Component {
     super(props)
     this.state = {
       title: '',
+      error: null,
       loading: false
     }
   }
@@ -37,7 +38,7 @@ class AddCollectionTitle extends Component {
       createCollection(title)
       history.push(`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}/${routes.ADD_COLLECTION_FORM}/${docRef.id}`)
     })
-    .catch(err => console.log(err))
+    .catch(error => this.setState({ error, loading: false }))
   }
 
   render () {

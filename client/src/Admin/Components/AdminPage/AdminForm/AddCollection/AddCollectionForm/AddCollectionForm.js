@@ -25,6 +25,7 @@ class AddCollectionForm extends Component {
       cover_file: '',
       item_files: [],
       images_download_url: [],
+      error: null,
       loading: false
     }
   }
@@ -80,7 +81,7 @@ class AddCollectionForm extends Component {
       collection_images_url: images_download_url
     }, { merge: true })
     .then(() => this.setState({ loading: false }))
-    .catch((err) => console.log(err))
+    .catch((error) => this.setState({ error, loading: false }))
   }
 
   render () {
