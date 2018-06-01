@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 import { auth } from '../../../Services/Firebase';
 import Spinner from '../../../Providers/Spinner/Spinner';
 
-import * as routes from '../../../Constants/routes';
-
+import TEXTS from '../../../Texts/Texts';
 import './PasswordForget.css'
-
-const PasswordForgetPage = () =>
-  <div>
-    <PasswordForgetForm />
-  </div>
 
 const INITIAL_STATE = {
   email: '',
@@ -62,11 +55,11 @@ class PasswordForgetForm extends Component {
             onChange={this.handleChange}
             onFocus={this.handleOnFocus}
             type="text"
-            placeholder="Email Address"/>
+            placeholder={TEXTS.PASSWORD_FORGET.PLACEHOLDER.EMAIL}/>
           <button disabled={isInvalid} type="submit">
-            Reset My Password
+            {TEXTS.PASSWORD_FORGET.SUBMIT}
           </button>
-          { error && <p>{error.message}</p> }
+          {error && <p>{error.message}</p>}
         </form>
         {loading && <Spinner/>}
       </div>
@@ -74,11 +67,4 @@ class PasswordForgetForm extends Component {
   }
 }
 
-const PasswordForgetLink = () =>
-  <p>
-    <Link to={`/${routes.PASSWORD_FORGET}`}>Forgot Password?</Link>
-  </p>
-
-export default PasswordForgetPage;
-
-export { PasswordForgetForm, PasswordForgetLink };
+export default PasswordForgetForm;

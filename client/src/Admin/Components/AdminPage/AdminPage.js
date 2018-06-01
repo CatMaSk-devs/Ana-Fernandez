@@ -24,7 +24,9 @@ const AdminPage = () => {
           <div className="admin_main">
             <Route exact path={`/${routes.ADMIN_PAGE}`} component={AdminForm} />
             <Route exact path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`} component={MyCollections} />
-            <Route path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}`} component={AddCollection} />
+            <Route
+              path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}`}
+              component={AddCollection} />
           </div>
           <div className="admin_footer"></div>
         </div>

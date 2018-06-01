@@ -4,6 +4,7 @@ import { db } from '../../../../../../Services/Firebase/FirebaseService';
 import Spinner from '../../../../../../Providers/Spinner/Spinner';
 
 import * as routes from '../../../../../../Constants/routes';
+import TEXTS from '../../../../../../Texts/Texts';
 
 import './AddCollectionTitle.css';
 
@@ -53,7 +54,7 @@ class AddCollectionTitle extends Component {
             name="title"
             onChange={this.handleChange}
             type="text"
-            placeholder="Título de la colección"/>
+            placeholder={TEXTS.ADD_COLLECTION.ADD_COLLECTION_TITLE.PLACEHOLDER.TITLE}/>
             <button type="submit">Crear</button>
           </form>
         </div>

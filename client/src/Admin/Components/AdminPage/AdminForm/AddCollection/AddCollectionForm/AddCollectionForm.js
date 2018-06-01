@@ -98,24 +98,24 @@ class AddCollectionForm extends Component {
                 name="title"
                 onChange={this.handleChange}
                 type="text"
-                placeholder="Título de la colección"/>
+                placeholder={TEXTS.ADD_COLLECTION.ADD_COLLECTION_FORM.PLACEHOLDER.TITLE} />
               <textarea
                 rows="4" cols="50"
                 value={description}
                 name="description"
                 onChange={this.handleChange}
                 type="text"
-                placeholder="Descripción"/>
-              <h2>{TEXTS.COLLECTION_FORM.COVER_IMAGE}</h2>
-              {cover_file && <img src={cover_file[0].preview} height="200" width="auto" alt={cover_file.name}/>}
+                placeholder={TEXTS.ADD_COLLECTION.ADD_COLLECTION_FORM.PLACEHOLDER.DESCRIPTION} />
+              <h2>{TEXTS.ADD_COLLECTION.ADD_COLLECTION_FORM.COVER_IMAGE}</h2>
+              {cover_file && <img src={cover_file[0].preview} height="200" width="auto" alt={cover_file.name} />}
               <DropZone onDropCover={this.handleDropCover} />
             </section>
             <section>
-              <h2>{TEXTS.COLLECTION_FORM.ITEM_IMAGES}</h2>
+              <h2>{TEXTS.ADD_COLLECTION.ADD_COLLECTION_FORM.ITEM_IMAGES}</h2>
               {item_files && item_files.map((image, index) => (
-                <img key={index} src={image.preview} height="200" width="auto" alt={image.name}/>
+                <img key={index} src={image.preview} height="200" width="auto" alt={image.name} />
               ))}
-              <DropZone onDropItems={this.handleDropItems} itemsForm={true}/>
+              <DropZone onDropItems={this.handleDropItems} itemsForm={true} />
             </section>
             <button type="submit">Crear</button>
           </form>

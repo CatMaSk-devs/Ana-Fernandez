@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ScaleLoader } from 'react-spinners';
+import CONSTANTS from '../../Constants/constants';
 
 import './Spinner.css';
 
@@ -15,9 +16,8 @@ class Spinner extends Component {
     return (
       <div className='spinner-loading'>
         <ScaleLoader
-          color={'#687bcd'}
-          loading={this.state.loading}
-        />
+          color={CONSTANTS.SPINNER_COLOR}
+          loading={this.state.loading}/>
       </div>
     )
   }

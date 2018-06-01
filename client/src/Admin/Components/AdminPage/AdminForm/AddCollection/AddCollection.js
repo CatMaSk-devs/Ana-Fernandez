@@ -27,12 +27,12 @@ class AddCollection extends Component {
       <div>
         <Route
           exact path={`${match.url}/${routes.ADD_COLLECTION_TITLE}`}
-          component={(props) => <AddCollectionTitle {...props} createCollection={this.onCreateCollection}/>}>
+          component={(props) => <AddCollectionTitle { ...props } createCollection={this.onCreateCollection} />}>
         </Route>
         <Route exact path={`${match.url}/${routes.ADD_COLLECTION_FORM}`} component={AddCollectionForm}></Route>
         <Route
           exact path={`${match.url}/${routes.ADD_COLLECTION_FORM}/:id`}
-          component={(props) => <AddCollectionForm {...props} title={title}/>}>
+          component={(props) => <AddCollectionForm { ...props } title={title} />}>
         </Route>
       </div>
     )

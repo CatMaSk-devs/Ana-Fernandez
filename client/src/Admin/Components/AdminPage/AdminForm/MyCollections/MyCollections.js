@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import TEXTS from '../../../../../Texts/Texts';
+
 import * as routes from '../../../../../Constants/routes'
 
 import './MyCollections.css';
@@ -23,14 +25,16 @@ const MyCollections = () => {
               pathname: `/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${image.id}`,
               state: { modal: true }
             }}>
-            <img className="collection" src={image.url} alt={image.alt}/>
+            <img className="collection" src={image.url} alt={image.alt} />
             <p>{image.title}</p>
           </Link>
-          <button>Editar colección</button>
-          <button>Eliminar colección</button>
+          <button>{TEXTS.MY_COLLECTIONS.EDIT_COLLECTION}</button>
+          <button>{TEXTS.MY_COLLECTIONS.REMOVE_COLLECTION}</button>
         </div>
       ))}
-      <Link to={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}/${routes.ADD_COLLECTION_TITLE}`}>Crear colección</Link>
+      <Link to={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}/${routes.ADD_COLLECTION_TITLE}`}>
+        {TEXTS.MY_COLLECTIONS.ADD_COLLECTION}
+      </Link>
     </div>
   )
 }

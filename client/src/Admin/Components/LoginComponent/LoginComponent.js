@@ -5,6 +5,7 @@ import { auth } from "../../../Services/Firebase";
 import Spinner from '../../../Providers/Spinner/Spinner';
 
 import * as routes from "../../../Constants/routes";
+import TEXTS from '../../../Texts/Texts';
 
 import './LoginComponent.css'
 
@@ -67,20 +68,20 @@ class SignInForm extends Component {
                 name="email"
                 onChange={this.handleChange}
                 type="text"
-                placeholder="Email Address"/>
+                placeholder={TEXTS.LOGIN.PLACEHOLDER.EMAIL}/>
               <input
                 value={password}
                 name="password"
                 onChange={this.handleChange}
                 type="password"
-                placeholder="Password"/>
+                placeholder={TEXTS.LOGIN.PLACEHOLDER.PASSWORD}/>
               <button disabled={isInvalid} type="submit">
                 Sign In
               </button>
               <p className="message">
-                Has olvidado la contraseña?{" "}
+                {TEXTS.LOGIN.PASSWORD_FORGET.REQUEST}{" "}
                 <span>
-                  <Link to={routes.PASSWORD_FORGET}> Solicita una nueva</Link>
+                  <Link to={routes.PASSWORD_FORGET}> {TEXTS.LOGIN.PASSWORD_FORGET.NEW}</Link>
                 </span>
               </p>
               {error && <p>{error.message}</p>}

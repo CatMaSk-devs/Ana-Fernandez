@@ -1,6 +1,9 @@
 const CONSTANTS = {
-  ERROR_CODE: {
-    PASSWORD_MATCH: 'auth/requires-recent-login'
+  SPINNER: {
+    SPINNER_COLOR: '#687bcd'
+  },
+  SCROLL_SMOOTH: {
+    BEHAVIOR: 'smooth'
   }
 }
 

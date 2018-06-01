@@ -9,12 +9,12 @@ import './AdminForm.css'
 
 const AdminForm = () => {
 
-    return (
-      <div>
-        <Redirect to={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`} />
-        <Route path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`} component={MyCollections} />
-      </div>
-    )
+  return (
+    <div>
+      <Redirect to={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`} />
+      <Route path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`} component={MyCollections} />
+    </div>
+  )
 }
 
 export default AdminForm
