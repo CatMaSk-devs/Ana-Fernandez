@@ -16,7 +16,7 @@ class Spinner extends Component {
     return (
       <div className='spinner-loading'>
         <ScaleLoader
-          color={CONSTANTS.SPINNER_COLOR}
+          color={CONSTANTS.SPINNER.SPINNER_COLOR}
           loading={this.state.loading}/>
       </div>
     )

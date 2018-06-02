@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 import firebase from 'firebase';
 
-import { db } from '../../../../../../Services/Firebase/FirebaseService';
+import CollectionSet from '../../../../../../Services/Firebase/FirebaseDB';
+
 import DropZone from '../../DropZone/DropZone';
 import Spinner from '../../../../../../Providers/Spinner/Spinner';
 import ScrollSmooth from '../../../../../../Providers/ScrollSmooth/ScrollSmooth';
@@ -10,8 +11,6 @@ import ScrollSmooth from '../../../../../../Providers/ScrollSmooth/ScrollSmooth'
 import TEXTS from '../../../../../../Texts/Texts';
 
 import './AddCollectionForm.css';
-
-const dbCollection = db.collection('collections')
 
 class AddCollectionForm extends Component {
   constructor (props) {
@@ -74,12 +73,7 @@ class AddCollectionForm extends Component {
 
   uploadCollection = async () => {
     const { id, description, images_download_url } = this.state
-    const collection = dbCollection.doc(id)
-    await collection.set({
-      description,
-      cover_image_url: images_download_url.shift(),
-      collection_images_url: images_download_url
-    }, { merge: true })
+    await CollectionSet(id, description, images_download_url)
     .then(() => this.setState({ loading: false }))
     .catch((error) => this.setState({ error, loading: false }))
   }

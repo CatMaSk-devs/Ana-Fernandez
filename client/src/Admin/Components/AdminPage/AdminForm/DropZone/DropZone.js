@@ -13,7 +13,6 @@ class DropZone extends Component {
   }
 
   render() {
-
     const { itemsForm, onDropItems, onDropCover } = this.props;
 
     return (

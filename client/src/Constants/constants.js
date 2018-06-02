@@ -1,4 +1,9 @@
 const CONSTANTS = {
+  DB: {
+    COLLECTION: {
+      DEFAULT: 'collections'
+    }
+  },
   SPINNER: {
     SPINNER_COLOR: '#687bcd'
   },
