@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import firebase from 'firebase';
 
-import CollectionSet from '../../../../../../Services/Firebase/FirebaseDB';
+import { SetCollection } from '../../../../../../Services/Firebase/FirebaseDB';
 
 import DropZone from '../../DropZone/DropZone';
 import Spinner from '../../../../../../Providers/Spinner/Spinner';
@@ -73,7 +73,7 @@ class AddCollectionForm extends Component {
 
   uploadCollection = async () => {
     const { id, description, images_download_url } = this.state
-    await CollectionSet(id, description, images_download_url)
+    await SetCollection(id, description, images_download_url)
     .then(() => this.setState({ loading: false }))
     .catch((error) => this.setState({ error, loading: false }))
   }
