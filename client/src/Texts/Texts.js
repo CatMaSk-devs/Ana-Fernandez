@@ -39,7 +39,7 @@ const TEXTS = {
   LOGIN: {
     PLACEHOLDER: {
       EMAIL: 'Email address',
-      PASSWORD: 'PAssword'
+      PASSWORD: 'Password'
     },
     PASSWORD_FORGET: {
       REQUEST: 'Has olvidado la contraseña?',

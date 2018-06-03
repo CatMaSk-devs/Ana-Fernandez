@@ -9,6 +9,7 @@ import Spinner from '../../../../../../Providers/Spinner/Spinner';
 import ScrollSmooth from '../../../../../../Providers/ScrollSmooth/ScrollSmooth';
 
 import TEXTS from '../../../../../../Texts/Texts';
+import * as routes from '../../../../../../Constants/routes';
 
 import './AddCollectionForm.css';
 
@@ -74,7 +75,10 @@ class AddCollectionForm extends Component {
   uploadCollection = async () => {
     const { id, description, images_download_url } = this.state
     await SetCollection(id, description, images_download_url)
-    .then(() => this.setState({ loading: false }))
+    .then(() => {
+      this.setState({ loading: false })
+      this.props.history.push(`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`)
+    })
     .catch((error) => this.setState({ error, loading: false }))
   }
 
