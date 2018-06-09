@@ -18,4 +18,9 @@ const GetCollection = async () => {
   return response
 }
 
-export { SetCollection, GetCollection }
+const RemoveCollection = async id => {
+  const response = await db.collection(COLLECTION).doc(id).delete();
+  return response
+}
+
+export { SetCollection, GetCollection, RemoveCollection }

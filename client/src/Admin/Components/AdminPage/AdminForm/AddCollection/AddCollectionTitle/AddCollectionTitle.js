@@ -31,9 +31,7 @@ class AddCollectionTitle extends Component {
     e.preventDefault()
     const { title } = this.state
     const { history, createCollection } = this.props
-    await dbCollection.add({
-      title
-    })
+    await dbCollection.add({ title })
     .then((docRef) => {
       this.setState({ loading: false })
       createCollection(title)

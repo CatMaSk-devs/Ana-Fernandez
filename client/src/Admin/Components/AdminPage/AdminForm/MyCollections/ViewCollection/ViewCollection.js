@@ -3,28 +3,18 @@ import React from 'react';
 import './ViewCollection.css'
 
 const ViewCollection = ({ location }) => {
+  console.log(location)
 
-  // const image = IMAGES[parseInt(match.params.id, 10)];
-  // const back = e => {
-  //   e.stopPropagation();
-  //   history.goBack();
-  // };
-const { collection } = location.state
+  const { collection } = location.state
+  console.log(collection)
 
   return (
     <div>
-      <img src={collection.cover_image_url} height="200" width="auto" alt={collection.title}/>
+      <img src={collection.cover_image_url.url} height="200" width="auto" alt={collection.title}/>
       {collection.collection_images_url.map(image => (
-        <img src={image} height="100" width="auto" alt=''/>
+        <img key={image.id} src={image.url} height="100" width="auto" alt={image.id}/>
       ))}
     </div>
-    // <div className="modal">
-    //   <div className="view">
-    //     <button className="btn_modal" type="button" onClick={back}>
-    //       X
-    //     </button>
-    //   </div>
-    // </div>
   );
 }
 

@@ -5,4 +5,13 @@ const storageRef = async file => {
   return response
 }
 
-export default storageRef
+const StorageRefDelete = async id => {
+  const storagemec = storage.ref();
+  const imagesRef = storagemec.child(id);
+  const response = await imagesRef.delete()
+  .then(()=> console.log('ok...'))
+  .catch(error => console.log(error))
+  return response
+}
+
+export { storageRef, StorageRefDelete }

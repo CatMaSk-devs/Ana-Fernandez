@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 
-import firebase from 'firebase';
 import uuid from 'uuid';
 
 import DropZone from '../DropZone/DropZone';
@@ -41,31 +40,6 @@ class EditCollection extends Component {
     })
     .then(() => console.log('Succesfull'))
     .catch(err => console.log(err))
-
-    // console.log(title)
-    // console.log(description)
-    // console.log(files)
-    // const file = files[0];
-    // const storageRef = firebase.storage().ref(`/photos/${file.name}`);
-    // const task = storageRef.put(file);
-    // task.on('state_changed', snapshot => {
-    //   const percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    //   this.setState({
-    //     uploadValue: percentage
-    //   })}, error => {
-    //     console.log(error.message)
-    //   }, ()=> {
-    //     this.setState({
-    //       files: [file],
-    //       uploadValue: 100,
-    //       cover: task.snapshot.downloadURL
-    //     });
-    //     dbCollection.doc(title).set({
-    //       id: uuid(),
-    //       cover_image_url: task.snapshot.downloadURL
-    //     });
-    //   }
-    // );
   }
 
   handleDrop = files => {

@@ -52,7 +52,8 @@ const TEXTS = {
   MY_COLLECTIONS: {
     EDIT_COLLECTION: 'Editar colección',
     REMOVE_COLLECTION: 'Eliminar colección',
-    ADD_COLLECTION: 'Crear colección'
+    ADD_COLLECTION: 'Crear colección',
+    VIEW_COLLECTION: 'Ver colección'
   }
 };
 

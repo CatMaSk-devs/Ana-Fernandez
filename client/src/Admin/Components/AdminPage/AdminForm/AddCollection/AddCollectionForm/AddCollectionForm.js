@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import firebase from 'firebase';
+import uuid from 'uuid';
 
 import { SetCollection } from '../../../../../../Services/Firebase/FirebaseDB';
 
@@ -24,7 +25,10 @@ class AddCollectionForm extends Component {
       items: [],
       cover_file: '',
       item_files: [],
-      images_download_url: [],
+      images_download_url: [{
+        url: '',
+        id: ''
+      }],
       error: null,
       loading: false
     }
@@ -52,7 +56,7 @@ class AddCollectionForm extends Component {
 
   uploadImage = async image_file => {
     const { id } = this.state
-    const storageRef = await firebase.storage().ref(`/${id}/${image_file.name}`);
+    const storageRef = await firebase.storage().ref(`photo/${id}/${image_file.name}`);
     return new Promise((resolve, reject) => storageRef.put(image_file).then(resolve))
   }
 
@@ -65,9 +69,16 @@ class AddCollectionForm extends Component {
     const images = image_files.map(image_file => {
         return this.uploadImage(image_file)
       })
-    const snapshots = await Promise.all(images)
+    const snapshots = await Promise.all(images);
+    const imagesObject = snapshots.reduce((acc, snapshot, index) => {
+      acc[index] = {
+        url: snapshot.downloadURL,
+        id: uuid()
+      }
+      return acc
+    }, [{}])
     this.setState({
-      images_download_url: snapshots.map(snapshot => snapshot.downloadURL)
+      images_download_url: imagesObject
     });
     this.uploadCollection()
   }
