@@ -25,7 +25,7 @@ class AddCollectionForm extends Component {
       items: [],
       cover_file: '',
       item_files: [],
-      images_download_url: [{
+      collection_images_url: [{
         url: '',
         id: ''
       }],
@@ -35,9 +35,19 @@ class AddCollectionForm extends Component {
   }
 
   componentDidMount() {
-    const { title } = this.props
     const { id } = this.props.match.params
-    this.setState({ title, id })
+    if (this.props.title) {
+      const { title } = this.props
+      this.setState({ title, id })
+    } else if (this.props.location.state) {
+      const { title, description, collection_images_url, collection_cover_image } = this.props.location.state.collection;
+      this.setState({
+        title,
+        description,
+        collection_cover_image,
+        collection_images_url
+      })
+    }
   }
 
   handleChange = e => {
@@ -78,14 +88,14 @@ class AddCollectionForm extends Component {
       return acc
     }, [{}])
     this.setState({
-      images_download_url: imagesObject
+      collection_images_url: imagesObject
     });
     this.uploadCollection()
   }
 
   uploadCollection = async () => {
-    const { id, description, images_download_url } = this.state
-    await SetCollection(id, description, images_download_url)
+    const { id, description, collection_images_url } = this.state
+    await SetCollection(id, description, collection_images_url)
     .then(() => {
       this.setState({ loading: false })
       this.props.history.push(`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`)

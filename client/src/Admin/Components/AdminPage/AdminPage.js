@@ -8,6 +8,7 @@ import AdminForm from './AdminForm/AdminForm';
 import MyCollections from './AdminForm/MyCollections/MyCollections';
 import AddCollection from './AdminForm/AddCollection/AddCollection';
 import ViewCollection from './AdminForm/MyCollections/ViewCollection/ViewCollection';
+import AddCollectionForm from "./AdminForm/AddCollection/AddCollectionForm/AddCollectionForm";
 
 import * as routes from '../../../Constants/routes'
 
@@ -43,8 +44,11 @@ class AdminPage extends Component {
                 selectCollection={this.onSelectCollection}
                 component={MyCollections} />
               <Route
-                exact path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/:id`}
+                exact path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.VIEW_COLLECTION}/:id`}
                 component={(props) => <ViewCollection collection={collection} {...props} />} />
+              <Route
+                exact path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.EDIT_COLLECTION}/:id`}
+                component={(props) => <AddCollectionForm collection={collection} {...props} />} />
               <Route
                 path={`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.ADD_COLLECTION}`}
                 component={AddCollection} />

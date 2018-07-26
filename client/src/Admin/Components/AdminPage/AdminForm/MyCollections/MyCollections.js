@@ -32,9 +32,16 @@ class MyCollections extends Component {
     })
   }
 
+  handleViewCollection = collection => {
+    this.props.history.push({
+      pathname: `/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.VIEW_COLLECTION}/${collection.id}`,
+      state: { collection }
+    })
+  }
+
   handleEditCollection = collection => {
     this.props.history.push({
-      pathname: `/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${collection.id}`,
+      pathname: `/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.EDIT_COLLECTION}/${collection.id}`,
       state: { collection }
     })
   }
