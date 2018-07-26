@@ -71,7 +71,7 @@ class MyCollections extends Component {
             <div key={collection.id}>
               <Link className="collection"
               to={{
-                pathname: `/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${collection.id}`,
+                pathname: `/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}/${routes.VIEW_COLLECTION}/${collection.id}`,
                 state: { collection }
               }}>
               <img className="collection" src={collection.cover_image_url.url} alt={collection.cover_image_url.url} />
