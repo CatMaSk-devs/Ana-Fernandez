@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Navbar from "../Navbar/Navbar";
+import Carrousel from "./Carrousel/Carrousel";
 
-class HomePage extends Component {
+class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -9,14 +9,14 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="home-page">
-        <Navbar />
+      <div className="navbar">
         <div className="container-padding">
-          <h1>Hello World</h1>
+          <h1>Ana Fernández</h1>
+          <Carrousel></Carrousel>
         </div>
       </div>
     )
   }
 }
 
-export default HomePage;
+export default Navbar;

@@ -7,6 +7,7 @@ import * as routes from '../../../../../../Constants/routes';
 import TEXTS from '../../../../../../Texts/Texts';
 
 import './AddCollectionTitle.css';
+import { firebaseService } from '../../../../../../Services/Firebase';
 
 const dbCollection = db.collection('collections')
 
@@ -31,7 +32,7 @@ class AddCollectionTitle extends Component {
     e.preventDefault()
     const { title } = this.state
     const { history, createCollection } = this.props
-    await dbCollection.add({ title })
+    await dbCollection.add({ title, created: firebaseService.timestamp })
     .then((docRef) => {
       this.setState({ loading: false })
       createCollection(title)

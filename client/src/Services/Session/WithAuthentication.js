@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AuthUserContext from './AuthUserContext';
-import { firebase } from '../Firebase';
+import { firebaseService } from '../Firebase';
 
 const withAuthentication = (Component) =>
   class WithAuthentication extends React.Component {
@@ -14,7 +14,7 @@ const withAuthentication = (Component) =>
     }
 
     componentDidMount() {
-      firebase.auth.onAuthStateChanged(authUser => {
+      firebaseService.auth.onAuthStateChanged(authUser => {
         authUser
           ? this.setState(() => ({ authUser }))
           : this.setState(() => ({ authUser: null }));

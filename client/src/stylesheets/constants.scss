@@ -1,0 +1,22 @@
+//COLORS
+$primary:                  #1A1423;
+$primary-light:            #D7F1FD;
+$primary-lighter:          #F9F2F2;
+$secondary:                #912F56;
+$secondary-light:          #555A63;
+$secondary-lighter:        #E6E9EE;
+$background-primary:       #729EA1;
+$background-primary-light: #FAFAFA;
+$background-secondary:     #DB9D47;
+$status-complete:          #65CD72;
+$status-cancel:            #FE6A6A;
+$status-error:             #F9B13D;
+$success: $status-complete;
+$warning: $status-error;
+
+$shadow: 0 2px 4px rgba(black, .08);
+
+$screen-xs:           480px;
+$screen-sm:           768px;
+$screen-md:           992px;
+$screen-lg:           1140px;

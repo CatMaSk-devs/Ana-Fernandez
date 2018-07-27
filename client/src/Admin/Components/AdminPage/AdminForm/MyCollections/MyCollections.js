@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase';
 
 import { GetCollection, RemoveCollection } from '../../../../../Services/Firebase/FirebaseDB';
-import { StorageRefDelete } from '../../../../../Services/Firebase/FirebaseStorage';
 
 import TEXTS from '../../../../../Texts/Texts';
 
