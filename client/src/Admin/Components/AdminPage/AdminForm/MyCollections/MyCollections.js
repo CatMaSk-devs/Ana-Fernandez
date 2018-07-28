@@ -47,7 +47,7 @@ class MyCollections extends Component {
 
   handleRemoveCollection = async collectionID => {
     await RemoveCollection(collectionID);
-    const storageRef = await firebase.storage().ref(`/${collectionID}/`).delete();
+    await firebase.storage().ref(`/${collectionID}/`).delete();
     const collections = this.handleRemoveLocalCollection(collectionID);
     this.setState({ collections });
   }

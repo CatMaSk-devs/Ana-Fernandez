@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import firebase from 'firebase';
 import uuid from 'uuid';
-import { firebaseService } from "../../../../../../Services/Firebase";
 
 import { SetCollection } from '../../../../../../Services/Firebase/FirebaseDB';
 
@@ -84,8 +83,7 @@ class AddCollectionForm extends Component {
     const imagesObject = snapshots.reduce((acc, snapshot, index) => {
       acc[index] = {
         url: snapshot.downloadURL,
-        id: uuid(),
-        created: new Date()
+        id: uuid()
       }
       return acc
     }, [{}])

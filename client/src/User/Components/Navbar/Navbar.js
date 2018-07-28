@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Carrousel from "./Carrousel/Carrousel";
+// import Carrousel from "./Carrousel/Carrousel";
 
 class Navbar extends Component {
   constructor(props) {
@@ -11,8 +11,6 @@ class Navbar extends Component {
     return (
       <div className="navbar">
         <div className="container-padding">
-          <h1>Ana Fernández</h1>
-          <Carrousel></Carrousel>
         </div>
       </div>
     )
@@ -20,3 +18,6 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
+// <Carrousel></Carrousel>
+
