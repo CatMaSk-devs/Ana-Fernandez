@@ -1,24 +1,20 @@
 import React, { Component } from "react";
 import { GetCollection } from '../../../../Services/Firebase/FirebaseDB';
 
-import Lightbox from 'react-images';
+import LightBoxComponent from '../../LightBoxComponent/LightBoxComponent';
 
 class Collections extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      collections: [],
-      lightboxIsOpen: false,
-      currentImage: 0,
-      images: []
+      collections: []
     };
   }
 
   componentDidMount = async() => {
     try {
       const collections = await this.getCollection();
-      const images = this.getImageURLS(collections);
-      this.setState({ images, collections });
+      this.setState({ collections });
     } catch(error) {
       console.log(error);
     }
@@ -38,76 +34,38 @@ class Collections extends Component {
     }
   }
 
-  getImageURLS(collections) {
+  getImageURLS(index) {
+    const { collections } = this.state;
     let images = [];
-    collections.forEach(collection => images = [...images, { src: collection.cover_image_url.url }])
+    collections[index].collection_images_url.map(image => images = [...images, { src: image.url }])
     return images;
   }
 
-  closeLightbox = () => {
-    this.setState({ lightboxIsOpen: false})
-  }
-
-
-	openLightbox = (index, event) => {
-		event.preventDefault();
-		this.setState({
-			currentImage: index,
-			lightboxIsOpen: true,
-		});
-  }
-
-	gotoPrevious = () => {
-		this.setState({
-			currentImage: this.state.currentImage - 1,
-		});
-  }
-
-	gotoNext = () => {
-		this.setState({
-			currentImage: this.state.currentImage + 1,
-		});
-  }
-
-	gotoImage = (index) => {
-		this.setState({
-			currentImage: index,
-		});
-  }
-
-	handleClickImage = () => {
-		if (this.state.currentImage === this.props.images.length - 1) return;
-		this.gotoNext();
-  }
-
-  handleOnClickImage = () => {
-    this.setState({ lightboxIsOpen: true })
+  handleOnClickCoverImage = (index) => {
+    const images = this.getImageURLS(index);
+    this.setState({ images, lightboxIsOpen: true })
   }
 
   render() {
-    const { images, collections, currentImage, lightboxIsOpen, } = this.state;
+    const { images, collections, lightboxIsOpen } = this.state;
+    console.log(images)
+
       return (
         <div>
           <div className="collection-container">
-            { collections && collections.map(collection => (
+            { collections && collections.map((collection, index) => (
               <img
                 className="collection-image"
                 key={collection.cover_image_url.id}
                 src={collection.cover_image_url.url}
                 alt={collection.cover_image_url.id}
-                onClick={this.handleOnClickImage}/>
+                onClick={() => this.handleOnClickCoverImage(index)}/>
             ))}
           </div>
-          <Lightbox
-            currentImage={currentImage}
+          {images && <LightBoxComponent
             images={images}
             isOpen={lightboxIsOpen}
-            onClickImage={this.handleClickImage}
-            onClickNext={this.gotoNext}
-            onClickPrev={this.gotoPrevious}
-            onClickThumbnail={this.gotoImage}
-            onClose={this.closeLightbox}
-          />
+          />}
         </div>
       )
     }
