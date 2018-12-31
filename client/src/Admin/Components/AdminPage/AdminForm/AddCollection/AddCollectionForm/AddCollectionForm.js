@@ -67,7 +67,9 @@ class AddCollectionForm extends Component {
   uploadImage = async image_file => {
     const { id } = this.state
     const storageRef = await firebase.storage().ref(`photo/${id}/${image_file.name}`);
-    return new Promise((resolve, reject) => storageRef.put(image_file).then(resolve))
+    const snapshot = await storageRef.put(image_file);
+    const imageURL = await snapshot.ref.getDownloadURL()
+    return imageURL
   }
 
   handleSubmit = async e => {
@@ -79,10 +81,10 @@ class AddCollectionForm extends Component {
     const images = image_files.map(image_file => {
         return this.uploadImage(image_file)
       })
-    const snapshots = await Promise.all(images);
-    const imagesObject = snapshots.reduce((acc, snapshot, index) => {
+    const imagesURLS = await Promise.all(images);
+    const imagesObject = imagesURLS && imagesURLS.reduce((acc, imageURL, index) => {
       acc[index] = {
-        url: snapshot.downloadURL,
+        url: imageURL,
         id: uuid()
       }
       return acc
@@ -100,7 +102,7 @@ class AddCollectionForm extends Component {
       this.setState({ loading: false })
       this.props.history.push(`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`)
     })
-    .catch((error) => (console.log(error), this.setState({ error, loading: false })))
+    .catch((error) => this.setState({ error, loading: false }))
   }
 
   render () {
