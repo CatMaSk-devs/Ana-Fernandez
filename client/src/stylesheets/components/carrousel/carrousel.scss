@@ -2,9 +2,11 @@
   height: 60%;
   display: flex;
   scroll-snap-type: x mandatory;
-  overflow-x: auto;
+  overflow-x: scroll;
 
 .carrousel-img {
+  object-fit: cover;
+  padding: 0 1rem;
   height: 100%;
   scroll-snap-align: center;
 }
