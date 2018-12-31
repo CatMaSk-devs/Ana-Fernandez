@@ -100,7 +100,7 @@ class AddCollectionForm extends Component {
       this.setState({ loading: false })
       this.props.history.push(`/${routes.ADMIN_PAGE}/${routes.MY_COLLECTIONS}`)
     })
-    .catch((error) => this.setState({ error, loading: false }))
+    .catch((error) => (console.log(error), this.setState({ error, loading: false })))
   }
 
   render () {

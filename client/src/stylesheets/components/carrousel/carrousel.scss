@@ -1,0 +1,11 @@
+.carrousel-container {
+  height: 60%;
+  display: flex;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+
+.carrousel-img {
+  height: 100%;
+  scroll-snap-align: center;
+}
+}

@@ -25,11 +25,10 @@ class Carrousel extends Component {
   render() {
     const { collections } = this.state;
     return (
-      <div className="carrousel">
-      { collections && collections.map(collection => (
-        <img key={collection.cover_image_url.id} src={collection.cover_image_url.url} alt=""/>
-      ))}
-        <h1>Carrousel</h1>
+      <div className="carrousel-container">
+        { collections && collections.map(collection => (
+          <img className="carrousel-img" key={collection.cover_image_url.id} src={collection.cover_image_url.url} alt=""/>
+        ))}
       </div>
     )
   }

@@ -1,8 +1,27 @@
 .navbar {
   background-color: $primary;
-  height: 60%;
+  height: 10%;
   .title {
     margin: 0;
     color: white;
+  }
+  &--list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+
+    &--item {
+      font-size: 1.8rem;
+      &--link {
+        color: white;
+        transition: color .3s ease-out;
+        &:link {
+          text-decoration: none;
+        }
+        &:hover {
+          color: grey;
+        }
+      }
+    }
   }
 }
